@@ -1,7 +1,7 @@
 function adicionarTeste() {
 
     var body = {
-        nome_teste: "teste 04",
+        nome_teste: "teste 01",
         perguntas: []
     }
 
@@ -21,4 +21,9 @@ function adicionarTeste() {
     })
     
     request.catch(error => alert(error))
+}
+
+function getTestes() {
+
+    const request = fetch('http://localhost:8080/testes');
 }

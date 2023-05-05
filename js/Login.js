@@ -20,7 +20,7 @@ function login(){
         
         if(response.ok){
             alert('login valido')
-            window.location.href = "../html/inicio.html"
+            window.location.href = "../html/main.html"
         }else{
             alert('login invalido')
         }

@@ -1,6 +1,6 @@
-const loginModel = require('../controller/LoginController')
-const cadastrarTesteModel = require('../controller/CadastrarTesteController')
-const cadastrarPerguntaModel = require('../controller/CadastrarPerguntaController')
+const loginController = require('../controller/LoginController')
+const cadastrarTesteController = require('../controller/CadastrarTesteController')
+const cadastrarPerguntaController = require('../controller/CadastrarPerguntaController')
 const resultadoController = require('../controller/ResultadosController')
 
 const express = require('express')
@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {         
     const json = req.body.usuario
     console.log(json)         
-    if(loginModel.login(req.body.usuario, req.body.senha)){
+    if(loginController.login(req.body.usuario, req.body.senha)){
         res.sendStatus(200)        
     }else{
         res.sendStatus(401);
@@ -36,7 +36,7 @@ app.get('/testes', (req, res) => {
 //cadastra um teste
 app.post('/teste', (req, res) => {  
     try {
-      cadastrarTesteModel.gravarTeste(req.body)
+      cadastrarTesteController.gravarTeste(req.body)
       res.sendStatus(201)
     } catch (error){
       res.sendStatus(400)
@@ -49,7 +49,7 @@ localhost:8080/pergunta?teste=nomedoteste
 app.post('/pergunta', (req, res) => {
     //chama o model    
     try {        
-        cadastrarPerguntaModel.gravarPergunta(req.body, req.query.teste)
+        cadastrarPerguntaController.gravarPergunta(req.body, req.query.teste)
         res.sendStatus(201)
     } catch (error){
       res.sendStatus(400)
@@ -61,12 +61,12 @@ app.post('/pergunta', (req, res) => {
 */
 app.get('/perguntas', (req, res) => {
     let teste = req.query.descteste
-    let data = cadastrarPerguntaModel.getPerguntasByTest(teste)
+    let data = cadastrarPerguntaController.getPerguntasByTest(teste)
     
     if(data == undefined){
         res.sendStatus(404)
     }else{
-        res.send(cadastrarPerguntaModel.getPerguntasByTest(teste))
+        res.send(cadastrarPerguntaController.getPerguntasByTest(teste))
     }
    
 })
