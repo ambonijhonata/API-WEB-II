@@ -9,7 +9,7 @@ function cadastrarPergunta() {
         resposta: "10"
     }
 
-    const request = fetch('http://localhost:8080/pergunta?teste=teste 02', {
+    const request = fetch('http://localhost:8080/pergunta?teste=teste 01', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json",
